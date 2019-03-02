@@ -1,0 +1,56 @@
+<div id="filter-form">
+  <form [formGroup]="form" (ngSubmit)="getReport()">
+    <div class="row">
+      <div class="col-5 form-group">
+        <label for="project">project</label>
+        <pt3-project-selection formControlName="project"></pt3-project-selection>
+      </div>
+      <div class="col-5 form-group">
+        <label for="filter">filter</label>
+        <input pInputText type="text" name="filter" formControlName="filter" class="form-control" />
+      </div>
+      <div class="col-2 form-group">
+        <div>
+          <label class="pull-right" for="MyCheckBox">Fahrzeiten</label>
+        </div>
+        <div class="text-center">
+          <input formControlName="includeDrive" type="checkbox" id="exampleCheck1" class="checkbox-control" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-5 form-group">
+        <label for="from">start</label>
+        <p-calendar
+          class="form-control"
+          formControlName="from"
+          dateFormat="dd.mm.yy"
+          [showOnFocus]="false"
+          showIcon="true"
+          name="start"
+          #calstart
+        ></p-calendar>
+      </div>
+
+      <div class="col-5 form-group">
+        <label for="to">end</label>
+        <p-calendar
+          class="form-control"
+          formControlName="to"
+          dateFormat="dd.mm.yy"
+          [showOnFocus]="false"
+          showIcon="true"
+          name="end"
+          #calend
+        ></p-calendar>
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn btn-large btn-primary col-5" type="submit">lade report</button>
+      <button class="btn btn-large btn-primary  col-5 offset-2" type="button" (click)="exportReport()">
+        export csv
+      </button>
+    </div>
+  </form>
+</div>

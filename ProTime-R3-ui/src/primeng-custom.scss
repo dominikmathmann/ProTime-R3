@@ -1,0 +1,72 @@
+p-dropdown,
+p-calendar {
+  padding: 0px !important;
+  border: none !important;
+  > * {
+    width: 100% !important;
+  }
+}
+
+p-calendar {
+  input {
+    width: calc(100% - 2.357em) !important;
+  }
+}
+
+p-calendar.dbl-btn {
+  width: calc(100% - 2.8em) !important;
+  margin-right: 0.1rem !important;
+  float: left;
+
+  ~ p-button {
+    margin-top: 0.1em;
+    -webkit-appearance: none;
+  }
+}
+
+.ui-state-focus {
+  border-color: $primary !important;
+  outline: 0 !important;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+}
+
+.ui-inputtext {
+  border: 1px solid #ced4da !important;
+  border-radius: 0.25rem !important;
+}
+
+.ui-dropdown-label {
+  border: none !important;
+}
+
+.btn-primary {
+  background-color: $color4;
+  border-color: $color4;
+
+  &:hover {
+    background-color: lighten($color4, 10);
+    border-color: lighten($color4, 10);
+  }
+}
+
+.ui-button {
+  background-color: $color4 !important;
+  color: white !important;
+  &:hover {
+    background-color: lighten($color4, 10);
+    border-color: lighten($color4, 10);
+  }
+}
+
+.badge-info {
+  color: black;
+  background-color: $color2;
+}
+
+body .ui-table .ui-table-tbody > tr:nth-child(even).ui-state-highlight,
+body .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item.ui-state-highlight,
+body .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item-group.ui-state-highlight,
+body .ui-table .ui-table-tbody > tr.ui-state-highlight {
+  background-color: $color3;
+  color: black;
+}

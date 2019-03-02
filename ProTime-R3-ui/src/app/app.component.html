@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="menu">
+        <p-tabMenu [model]="items" *ngIf="loginService.user"></p-tabMenu>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="root">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-toast></p-toast>
+
+<div class="footer" *ngIf="loginService.user">
+  logged in as:
+  <p class="user">{{ loginService.user }}</p>
+  (
+  <p class="link" (click)="logout()">logout</p>
+  )
+</div>

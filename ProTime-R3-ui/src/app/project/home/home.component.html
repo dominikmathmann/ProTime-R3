@@ -1,0 +1,30 @@
+<p-table [value]="projects" selectionMode="single" [(selection)]="project" (selectionChange)="edit()">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-pro>
+    <tr [pSelectableRow]="pro">
+      <td>{{ pro.projectId }}</td>
+      <td>{{ pro.projectName }}</td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<form *ngIf="project" [formGroup]="form" (ngSubmit)="submit()" autocomplete="off">
+  <div class="form-group">
+    <label for="id">Projekt-ID</label>
+    <input type="text" id="id" class="form-control" formControlName="projectId" #inProjectId />
+  </div>
+  <div class="form-group">
+    <label for="name">Projekt-Name</label>
+    <input type="text" id="name" class="form-control" formControlName="projectName" />
+  </div>
+
+  <div class="row">
+    <button class="btn btn-large btn-primary col-5" type="submit">speichern</button>
+    <button class="btn btn-large btn-primary  col-5 offset-2" type="button" (click)="project = null">abbrechen</button>
+  </div>
+</form>

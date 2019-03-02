@@ -1,0 +1,79 @@
+<pt3-filter-form (reportLoaded)="report = $event"></pt3-filter-form>
+<h2>Tätigkeitsnachweis</h2>
+<div class="header">
+  <div class="content">
+    <div contenteditable="true">
+      <br />
+      Kunde: <br />
+      <div contenteditable="true"><b>...</b></div>
+    </div>
+  </div>
+  <div class="content">
+    <div>
+      <div><img src="./assets/images/gedo.png" alt="gedoplan" width="300" /></div>
+      <br />
+      <div>
+        GEDOPLAN GmbH <br />Stieghorster Straße 60 <br />33605 Bielefeld <br />
+        <br />Tel.: 0521 / 2088910 <br />Fax.: 0521 / 2088945 <br />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div *ngIf="report" class="col-12">
+    <table class="export">
+      <tr>
+        <td>Datum</td>
+        <td>Projekt</td>
+        <td>Zeit</td>
+        <td>Tätigkeit</td>
+      </tr>
+    </table>
+
+    <table *ngFor="let day of report.days" class="export">
+      <ng-container *ngFor="let record of day.entries">
+        <tr>
+          <td>{{ day.date | date: 'dd.MM.yyyy' }}</td>
+          <td>{{ record.project | projectIdToName | async }}</td>
+          <td>{{ record.duration | timeToHour }}</td>
+          <td>{{ record.description }}</td>
+        </tr>
+        <tr *ngIf="record.durationNotAccountable">
+          <td>{{ day.date | date: 'dd.MM.yyyy' }}</td>
+          <td>{{ record.project | projectIdToName | async }} - Fahrzeit</td>
+          <td>{{ record.durationNotAccountable | timeToHour }}</td>
+          <td></td>
+        </tr>
+      </ng-container>
+
+      <tr>
+        <td></td>
+        <td></td>
+        <td>
+          <b>{{ day.duration | timeToHour }}</b>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="4 "><hr style="border-color: black; " /></td>
+      </tr>
+    </table>
+
+    <table class="export">
+      <tr>
+        <td></td>
+        <td></td>
+        <td>
+          <b>{{ report.duration | timeToHour }}</b>
+        </td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<br />
+<br />
+Ort,Datum / Unterschrift <br />
+<br />
+_______________________________________________________

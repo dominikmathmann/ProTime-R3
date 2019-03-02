@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2rem;
+
+  .content {
+    width: 50vw;
+  }
+
+  .content:last-child {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
+
+.export tr td:nth-child(1) {
+  width: 100px;
+}
+.export tr td:nth-child(2) {
+  width: 300px;
+}
+.export tr td:nth-child(3) {
+  width: 100px;
+}
+.export tr td:nth-child(4) {
+  width: 400px;
+}

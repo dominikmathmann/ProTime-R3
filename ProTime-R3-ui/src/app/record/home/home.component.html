@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col-12 col-lg-5">
+    <pt3-record-input [recordEvent]="selectedRecord" (saved)="updateTable($event)"></pt3-record-input>
+  </div>
+  <div class="col-12 col-lg-7">
+    <pt3-record-table (select)="selectedRecord = $event"></pt3-record-table>
+  </div>
+</div>

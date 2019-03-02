@@ -1,0 +1,78 @@
+@import '../node_modules/primeng/resources/themes/nova-light/theme.css';
+@import '../node_modules/primeng/resources/primeng.min.css';
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import 'style-palette.scss';
+@import 'primeng-custom.scss';
+
+h1,
+h2,
+h3 {
+  font-family: 'Raleway', sans-serif;
+}
+
+body {
+  .root {
+    padding-top: 0.5rem;
+  }
+
+  .ui-tabmenu {
+    height: 3rem;
+
+    .ui-tabmenu-nav {
+      .ui-tabmenuitem {
+        background-color: white;
+        border: 0px;
+      }
+
+      :hover:not(.ui-state-active) {
+        border: none !important;
+      }
+
+      .ui-tabmenuitem.ui-state-active {
+        background-color: inherit;
+        border: none;
+        color: black;
+        border-bottom: 0.6rem solid $color2;
+
+        * {
+          color: black !important;
+        }
+      }
+    }
+  }
+}
+
+input[type='checkbox'] {
+  transform: scale(1.5);
+}
+
+form > .row:last-child {
+  margin: 1.5rem 0rem;
+}
+
+.form-header-badge {
+  display: flex;
+  flex-direction: row-reverse;
+  min-height: 1.2rem;
+}
+
+@media print {
+  .menu,
+  pt3-filter-form {
+    display: none;
+  }
+}
+
+p.link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.fullsize-logo {
+  height: calc(100vh - 8rem);
+  background-size: cover;
+  background-position: center center;
+  background-image: url('assets/images/time-371226_1280.jpg');
+}

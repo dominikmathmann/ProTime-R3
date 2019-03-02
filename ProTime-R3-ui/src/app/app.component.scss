@@ -1,0 +1,20 @@
+.fa {
+  font-size: 3rem;
+  color: black;
+}
+
+.footer {
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  .user {
+    font-weight: bold;
+    padding: 0 0.5rem;
+  }
+}
+
+.menu {
+  min-height: 3rem;
+}

@@ -1,0 +1,11 @@
+.fullsize {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .content {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2rem 0rem;
+  }
+}

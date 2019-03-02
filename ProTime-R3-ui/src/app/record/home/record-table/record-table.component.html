@@ -1,0 +1,22 @@
+<p-table [value]="records" selectionMode="single" [(selection)]="record" (selectionChange)="onselect()">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Projekt</th>
+      <th></th>
+      <th>Zeit</th>
+      <th style="width: 4em"></th>
+      <th class="options"></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rec>
+    <tr [pSelectableRow]="rec">
+      <td>{{ rec.project | projectIdToName | async }}</td>
+      <td>{{ rec.description }}</td>
+      <td>{{ rec.start | date: 'dd.MM.yy HH:mm' }} - {{ rec.end | date: 'HH:mm' }}</td>
+      <td>{{ rec.duration | timeToHour }}</td>
+      <td>
+        <button pButton icon="pi pi-copy" (click)="copy(rec)" class="ui-button-raised ui-button-secondary"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

@@ -1,0 +1,11 @@
+{
+  "http://localhost:4200/resources/*": {
+    "target": "https://localhost/resources",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/resources": ""
+    }
+  }
+}

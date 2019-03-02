@@ -1,0 +1,62 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+  <div class="form-header-badge">
+    <span class="badge badge-info" *ngIf="recordEvent?.copy">Kopie</span>
+    <span class="badge badge-info" *ngIf="recordEvent?.record.id">Bearbeitung</span>
+  </div>
+  <div class="form-group">
+    <label for="project">Projekt</label>
+    <pt3-project-selection formControlName="project"></pt3-project-selection>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Beschreibung</label>
+    <input formControlName="description" id="description" type="text" class="form-control" #descriptionInput />
+  </div>
+
+  <div class="form-group">
+    <label for="from">Start</label>
+    <div class="">
+      <p-calendar
+        formControlName="start"
+        id="from"
+        dateFormat="dd.mm.yy"
+        hourFormat="24"
+        showIcon="true"
+        [showOnFocus]="false"
+        showTime="true"
+        class="dbl-btn form-control"
+      ></p-calendar>
+      <p-button type="button" icon="pi pi-replay" (click)="setNow(form.controls['start'])"></p-button>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="until">Ende</label>
+    <div class="">
+      <p-calendar
+        formControlName="end"
+        id="until"
+        dateFormat="dd.mm.yy"
+        hourFormat="24"
+        showIcon="true"
+        [showOnFocus]="false"
+        showTime="true"
+        class="dbl-btn form-control"
+      ></p-calendar>
+      <p-button type="button" icon="pi pi-replay" (click)="setNow(form.controls['end'])"></p-button>
+    </div>
+  </div>
+  <div class="form-check">
+    <input
+      formControlName="journeyTime"
+      type="checkbox"
+      class="form-check-input"
+      id="exampleCheck1"
+      (change)="onDriveTimeChange()"
+    />
+    <label for="test" class="form-check-label">Fahrzeit</label>
+  </div>
+  <div class="row">
+    <button class="btn btn-large btn-primary col-5" type="submit">speichern</button>
+    <button class="btn btn-large btn-primary  col-5 offset-2" type="button" (click)="cancel()">abbrechen</button>
+  </div>
+</form>

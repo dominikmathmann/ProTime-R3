@@ -1,0 +1,84 @@
+{
+  "project": [
+    {
+      "projectId": "R500",
+      "projectName": "Demo Projekt 501",
+      "id": 1
+    },
+    {
+      "projectId": "EV",
+      "projectName": "Test Project 100",
+      "id": 2
+    },
+    {
+      "projectId": "RV.100",
+      "projectName": "Helo",
+      "id": 3
+    },
+    {
+      "projectId": "NoOne",
+      "projectName": "Sdsd",
+      "id": 4
+    },
+    {
+      "projectId": "100",
+      "projectName": "1222",
+      "id": 5
+    },
+    {
+      "projectId": "11122",
+      "projectName": "12121",
+      "id": 6
+    }
+  ],
+  "task": [
+    {
+      "id": 100,
+      "start": "2019-02-07T07:09:51.197Z",
+      "end": "07.02.2019 10:09",
+      "description": "string",
+      "journeyTime": true,
+      "duration": 136
+    },
+    {
+      "id": 101,
+      "start": "2019-02-14T14:13:00.931Z",
+      "end": "2019-02-14T14:13:01.361Z",
+      "project": 3,
+      "description": "Gede",
+      "journeyTime": false
+    },
+    {
+      "id": 102,
+      "start": "2019-02-14T14:14:18.870Z",
+      "end": "2019-02-14T14:14:19.333Z",
+      "project": 3,
+      "description": "Gede",
+      "journeyTime": false
+    },
+    {
+      "id": 103,
+      "start": "2019-02-14T14:14:18.870Z",
+      "end": "2019-02-14T14:14:19.333Z",
+      "project": 3,
+      "description": "Gede",
+      "journeyTime": false
+    },
+    {
+      "id": 104,
+      "start": "2019-02-14T14:14:55.572Z",
+      "end": "2019-02-14T14:14:55.988Z",
+      "project": 2,
+      "description": "101 Task",
+      "journeyTime": false
+    },
+    {
+      "id": 105,
+      "start": "2019-02-14T14:18:39.585Z",
+      "end": "2019-02-14T14:18:40.065Z",
+      "project": 5,
+      "description": "Gede",
+      "journeyTime": false
+    }
+  ]
+}

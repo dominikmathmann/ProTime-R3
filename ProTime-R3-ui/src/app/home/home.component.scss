@@ -1,0 +1,25 @@
+.jumbo {
+  width: 100%;
+  overflow: hidden;
+  padding: 1rem 0rem;
+
+  @media screen and (min-width: 1200px) {
+    padding: 3rem 6rem;
+  }
+
+  .container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+
+    @media screen and (min-width: 1200px) {
+      align-items: flex-start;
+    }
+
+    .logo {
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.9);
+      text-align: center;
+    }
+  }
+}
