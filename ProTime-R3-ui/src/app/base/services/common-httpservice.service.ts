@@ -34,6 +34,6 @@ export abstract class CommonHTTPServiceService<T extends IntegerIdEntity> {
       params.first = first;
     }
 
-    return this.http.get<T[]>(environment.baseurl + this.PATH, { params }).pipe(delay(5000));
+    return this.http.get<T[]>(environment.baseurl + this.PATH, { params });
   }
 }
