@@ -46,3 +46,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+ProTime-R3-backend/src/main/java/de/dd/protime/r3/service/LoginService.java
+**/**/LoginService*

@@ -46,7 +46,7 @@ public class LoginService {
     
     public LoginService() {
         final String secret = System.getProperty(SYS_KEY_SECRET);
-        algorithm = Algorithm.HMAC256(secret==null?"DemoSecret":secret);
+        algorithm = Algorithm.HMAC256(secret==null?"K!3Ymk&khCGU(S!":secret);
         verifier = JWT.require(algorithm).build();
     }
 

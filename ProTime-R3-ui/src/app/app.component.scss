@@ -18,3 +18,29 @@
 .menu {
   min-height: 3rem;
 }
+
+.logo-header {
+  padding: 0.571em 1em;
+  h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    img {
+      height: 2rem;
+    }
+  }
+
+  @media screen and (min-width: 770px) {
+    h1 {
+      font-size: 2.5rem;
+      img {
+        height: 4rem;
+      }
+    }
+  }
+}
+
+.menu-burger {
+  position: fixed;
+  top: 0.4rem;
+  left: 0.4rem;
+}

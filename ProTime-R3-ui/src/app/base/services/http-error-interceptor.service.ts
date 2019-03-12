@@ -27,8 +27,9 @@ export class HttpErrorInterceptorService implements HttpInterceptor {
           severity: 'error',
           summary: 'HTTP-Request failed',
           detail: e.message,
-          sticky: true,
-          closable: true
+          sticky: false,
+          closable: true,
+          life: 6000
         });
         return throwError(e.message);
       })

@@ -44,8 +44,8 @@ public class AccountingService {
                     projectTimes.put(entry.getProject(), new Double[][]{new Double[last], new Double[last]});
                 }
 
-                projectTimes.get(entry.getProject())[0][dayEntry.getDate().getDayOfMonth() + 1] = 1. / 60. * entry.getDuration();
-                projectTimes.get(entry.getProject())[1][dayEntry.getDate().getDayOfMonth() + 1] = 1. / 60. * entry.getDurationNotAccountable();
+                projectTimes.get(entry.getProject())[0][dayEntry.getDate().getDayOfMonth() - 1] = 1. / 60. * entry.getDuration();
+                projectTimes.get(entry.getProject())[1][dayEntry.getDate().getDayOfMonth() - 1] = 1. / 60. * entry.getDurationNotAccountable();
             });
         });
 

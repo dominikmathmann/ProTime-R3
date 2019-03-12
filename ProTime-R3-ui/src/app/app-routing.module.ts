@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'record', loadChildren: './record/record.module#RecordModule', canActivate: [LoginGuardService] },
   { path: 'project', loadChildren: './project/project.module#ProjectModule', canActivate: [LoginGuardService] },
-  { path: 'report', loadChildren: './report/report.module#ReportModule', canActivate: [LoginGuardService] }
+  { path: 'report', loadChildren: './report/report.module#ReportModule', canActivate: [LoginGuardService] },
+  { path: 'notes', loadChildren: './notes/notes.module#NotesModule', canActivate: [LoginGuardService] }
 ];
 
 @NgModule({

@@ -12,6 +12,8 @@ import { HttpDateInterceptorService } from './base/services/http-date-intercepto
 import { LoginComponent } from './login/login.component';
 import { HttpJwtInterceptorService } from './base/services/http-jwt-interceptor.service';
 import { ToastModule } from 'primeng/toast';
+import { TieredMenuModule } from 'primeng/tieredmenu';
+import { ButtonModule } from 'primeng/button';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { HttpErrorInterceptorService } from './base/services/http-error-interceptor.service';
 
@@ -24,7 +26,9 @@ import { HttpErrorInterceptorService } from './base/services/http-error-intercep
     BrowserAnimationsModule,
     TabMenuModule,
     ReactiveFormsModule,
-    ToastModule
+    ToastModule,
+    TieredMenuModule,
+    ButtonModule
   ],
   providers: [
     MessageService,

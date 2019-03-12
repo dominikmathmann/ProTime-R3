@@ -1,14 +1,22 @@
 <div class="container">
-  <div class="row">
-    <div class="col-12">
-      <div class="menu">
-        <p-tabMenu [model]="items" *ngIf="loginService.user"></p-tabMenu>
-      </div>
+  <div class="col-12 logo-header" #ot>
+    <h1>
+      <img [src]="'assets/images/logoR.png'" />
+      ProTime-R3
+    </h1>
+  </div>
+  <div class="col-12">
+    <div class="menu" *ngIf="!smallScreen">
+      <p-tabMenu [model]="items"></p-tabMenu>
     </div>
-    <div class="col-12">
-      <div class="root">
-        <router-outlet></router-outlet>
-      </div>
+    <div class="menu-burger" *ngIf="smallScreen">
+      <button #btn type="button" pButton icon="pi pi-bars" (click)="menu.toggle($event)"></button>
+      <p-tieredMenu #menu [model]="items" [popup]="true" [appendTo]="ot"></p-tieredMenu>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="root">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
