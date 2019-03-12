@@ -1,7 +1,7 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Record } from 'src/app/ProTime-R3-backend';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Subject, Observable } from 'rxjs';
 import { RecordService } from 'src/app/base/services/record.service';
+import { Record } from 'src/app/ProTime-R3-backend';
 import { SelectRecordEvent } from 'src/app/ProTime-R3-models';
 
 @Component({
@@ -17,6 +17,8 @@ export class RecordTableComponent implements OnInit {
   @Output()
   select = new EventEmitter<SelectRecordEvent>();
 
+  loadDoneSubject = new Subject<any>();
+
   constructor(private service: RecordService) {}
 
   ngOnInit() {}
@@ -31,6 +33,7 @@ export class RecordTableComponent implements OnInit {
 
   loadData(loadEvent: any) {
     this.service.getAll(loadEvent.limit, loadEvent.first).subscribe(r => {
+      this.loadDoneSubject.next();
       if (!this.records) this.records = r;
       else this.records.push(...r);
     });

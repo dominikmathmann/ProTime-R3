@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IntegerIdEntity } from '../../ProTime-R3-backend';
 import { Observable } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
@@ -33,6 +34,6 @@ export abstract class CommonHTTPServiceService<T extends IntegerIdEntity> {
       params.first = first;
     }
 
-    return this.http.get<T[]>(environment.baseurl + this.PATH, { params });
+    return this.http.get<T[]>(environment.baseurl + this.PATH, { params }).pipe(delay(5000));
   }
 }

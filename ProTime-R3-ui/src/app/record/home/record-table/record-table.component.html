@@ -21,5 +21,9 @@
   </ng-template>
 </p-table>
 <div class="row justify-content-center m-3">
-  <pt3-load-more [itemsPerPage]="25" (loadTrigger)="loadData($event)"></pt3-load-more>
+  <pt3-load-more
+    [itemsPerPage]="25"
+    (loadTrigger)="loadData($event)"
+    [loadDoneSubject]="loadDoneSubject"
+  ></pt3-load-more>
 </div>
