@@ -28,6 +28,10 @@ public abstract class RepositoryUserOwned<T extends UserOwnedEntity> {
     public abstract Class<T> getEntityClass();
 
     public List<T> getAll(Integer limit) {
+        return this.getAll(limit, 0);
+    }
+    
+    public List<T> getAll(Integer limit, Integer first) {
         CriteriaBuilder criteriaBuilder = this.em.getCriteriaBuilder();
         CriteriaQuery<T> query = criteriaBuilder.createQuery(getEntityClass());
         Root<T> root = query.from(getEntityClass());
@@ -38,6 +42,7 @@ public abstract class RepositoryUserOwned<T extends UserOwnedEntity> {
         TypedQuery<T> createQuery = this.em.createQuery(query);
         if (limit != null && limit > 0) {
             createQuery.setMaxResults(limit);
+            createQuery.setFirstResult(first);
         }
         
         

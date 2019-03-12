@@ -26,8 +26,8 @@ public abstract class Resource<T extends UserOwnedEntity> {
     abstract RepositoryUserOwned<T> getRepository();
 
     @GET
-    public List<T> getAll(@QueryParam("limit") int limit) {
-        return getRepository().getAll(limit);
+    public List<T> getAll(@QueryParam("limit") int limit, @QueryParam("first") int first) {
+        return getRepository().getAll(limit, first);
     }
 
     @POST

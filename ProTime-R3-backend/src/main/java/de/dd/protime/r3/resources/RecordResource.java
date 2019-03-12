@@ -28,20 +28,6 @@ public class RecordResource extends Resource<Record> {
         return recordRepository;
     }
 
-    @Override
-    public Record put(Integer id, Record entity) {
-        return super.put(id, entity); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Record post(Record entity) {
-        return super.post(entity); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Record> getAll(int limit) {
-        return super.getAll(limit); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @GET
     @Path("/find/{from}/{to}")

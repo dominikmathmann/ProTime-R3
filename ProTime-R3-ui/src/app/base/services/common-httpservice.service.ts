@@ -23,13 +23,16 @@ export abstract class CommonHTTPServiceService<T extends IntegerIdEntity> {
     return obs;
   }
 
-  getAll(limit?: number): Observable<T[]> {
-    const params = new HttpParams();
+  getAll(limit?: number, first?: number): Observable<T[]> {
+    const params: any = {};
 
     if (limit) {
-      params.set('limit', limit.toString());
+      params.limit = limit;
+    }
+    if (first) {
+      params.first = first;
     }
 
-    return this.http.get<T[]>(environment.baseurl + this.PATH);
+    return this.http.get<T[]>(environment.baseurl + this.PATH, { params });
   }
 }

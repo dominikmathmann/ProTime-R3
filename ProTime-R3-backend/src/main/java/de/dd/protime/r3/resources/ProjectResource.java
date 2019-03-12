@@ -26,19 +26,4 @@ public class ProjectResource extends Resource<Project> {
         return projectRepository;
     }
 
-    @Override
-    public Project put(Integer id, Project entity) {
-        return super.put(id, entity); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Project post(Project entity) {
-        return super.post(entity); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Project> getAll(int limit) {
-        return super.getAll(limit); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

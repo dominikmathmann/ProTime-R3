@@ -65,7 +65,7 @@ public class LoginService {
 
     public String login(String username, String password) {
 
-        final User user = this.userRepository.findUniqueByAttribute("user", username);
+        final User user = this.userRepository.findUserByLogin(username);
         if (user == null) {
             throw new WebApplicationException("Invalid Login", Response.Status.FORBIDDEN);
         }

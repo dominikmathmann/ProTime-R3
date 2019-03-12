@@ -17,11 +17,7 @@ export class RecordTableComponent implements OnInit {
   @Output()
   select = new EventEmitter<SelectRecordEvent>();
 
-  constructor(private service: RecordService) {
-    service.getAll(500).subscribe(r => {
-      this.records = r;
-    });
-  }
+  constructor(private service: RecordService) {}
 
   ngOnInit() {}
 
@@ -31,5 +27,12 @@ export class RecordTableComponent implements OnInit {
 
   copy(record: Record) {
     this.select.emit({ record: { ...record, id: null }, copy: true });
+  }
+
+  loadData(loadEvent: any) {
+    this.service.getAll(loadEvent.limit, loadEvent.first).subscribe(r => {
+      if (!this.records) this.records = r;
+      else this.records.push(...r);
+    });
   }
 }

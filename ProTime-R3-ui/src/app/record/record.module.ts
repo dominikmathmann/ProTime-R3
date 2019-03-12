@@ -11,9 +11,10 @@ import { HomeComponent } from './home/home.component';
 import { RecordInputComponent } from './home/record-input/record-input.component';
 import { RecordTableComponent } from './home/record-table/record-table.component';
 import { RecordRoutingModule } from './record-routing.module';
+import { LoadMoreComponent } from './home/record-table/load-more/load-more.component';
 
 @NgModule({
-  declarations: [HomeComponent, RecordInputComponent, RecordTableComponent],
+  declarations: [HomeComponent, RecordInputComponent, RecordTableComponent, LoadMoreComponent],
   imports: [
     CommonModule,
     RecordRoutingModule,
