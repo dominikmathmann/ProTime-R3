@@ -22,9 +22,21 @@
 </p-table>
 
 <div class="row justify-content-center m-3">
-  <pt3-load-more
+  <!-- <pt3-load-more
     [itemsPerPage]="25"
     (loadTrigger)="loadData($event)"
     [loadDoneSubject]="loadDoneSubject"
-  ></pt3-load-more>
+  ></pt3-load-more> -->
+  <p-button
+    type="button"
+    icon="pi pi-replay"
+    dmLoadOnScoll
+    (loadTrigger)="loadData($event)"
+    [itemsPerPage]="25"
+    [loadDoneSubject]="loadDoneSubject"
+    [disableOnLoad]="true"
+    [rotateOnLoad]="true"
+    rotateOnLoadChildSelector=".pi"
+  >
+  </p-button>
 </div>

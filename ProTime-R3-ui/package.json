@@ -25,6 +25,7 @@
     "core-js": "^2.5.4",
     "file-saver": "^2.0.1",
     "jwt-decode": "^2.2.0",
+    "ng-dm-libs": "git+https://github.com/dominikmathmann/ng-dm-libs.git#v1.0.4",
     "primeicons": "^1.0.0",
     "primeng": "^7.0.5",
     "rxjs": "~6.3.3",
