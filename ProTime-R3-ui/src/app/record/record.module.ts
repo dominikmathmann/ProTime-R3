@@ -11,7 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { RecordInputComponent } from './home/record-input/record-input.component';
 import { RecordTableComponent } from './home/record-table/record-table.component';
 import { RecordRoutingModule } from './record-routing.module';
-import { LoadOnScrollModule } from 'ng-dm-libs/dist/load-on-scroll';
+import { LoadOnScrollModule } from 'load-on-scroll';
 
 @NgModule({
   declarations: [HomeComponent, RecordInputComponent, RecordTableComponent],
