@@ -44,11 +44,11 @@ public class RecordRepository extends RepositoryUserOwned<Record> {
         }
 
         if (description != null) {
-            description = "%" + description + "%";
+            description = "%" + description.toLowerCase() + "%";
             Join<Record, Project> joinProject = root.join(Record_.project);
-            Predicate descriptionLike = builder.like(root.get(Record_.description), description);
-            Predicate projectNameLike = builder.like(joinProject.get(Project_.projectName), description);
-            Predicate projectIdLike = builder.like(joinProject.get(Project_.projectId), description);
+            Predicate descriptionLike = builder.like( builder.lower(root.get(Record_.description)), description);
+            Predicate projectNameLike = builder.like(builder.lower(joinProject.get(Project_.projectName)), description);
+            Predicate projectIdLike = builder.like(builder.lower(joinProject.get(Project_.projectId)), description);
 
             conditions.add(builder.or(descriptionLike, projectIdLike, projectNameLike));
         }
