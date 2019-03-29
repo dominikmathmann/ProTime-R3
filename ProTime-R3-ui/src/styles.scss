@@ -60,8 +60,10 @@ form > .row:last-child {
 
 @media print {
   .menu,
+  .footer,
+  .logo-header,
   pt3-filter-form {
-    display: none;
+    display: none !important;
   }
 }
 
