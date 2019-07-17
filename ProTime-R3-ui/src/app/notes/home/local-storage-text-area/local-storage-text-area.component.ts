@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { UserPreferencesService } from 'src/app/base/services/user-preferences.service';
 
 @Component({
   selector: 'pt3-local-storage-text-area',
@@ -9,8 +10,6 @@ import { debounceTime } from 'rxjs/operators';
   styleUrls: ['./local-storage-text-area.component.scss']
 })
 export class LocalStorageTextAreaComponent implements OnInit, OnDestroy {
-  public static readonly LSPREFIX = 'PT3-LST';
-
   @Input()
   id = '';
 
@@ -18,8 +17,8 @@ export class LocalStorageTextAreaComponent implements OnInit, OnDestroy {
 
   txtChanged: Subscription;
 
-  constructor(formBuilder: FormBuilder) {
-    const content = localStorage.getItem(this.getKey());
+  constructor(formBuilder: FormBuilder, private uService: UserPreferencesService) {
+    const content = uService.getNotes(this.id);
     this.form = formBuilder.group({
       txtinput: [content]
     });
@@ -34,11 +33,7 @@ export class LocalStorageTextAreaComponent implements OnInit, OnDestroy {
     this.save();
   }
 
-  private getKey(): string {
-    return LocalStorageTextAreaComponent.LSPREFIX + this.id;
-  }
-
   private save() {
-    localStorage.setItem(this.getKey(), this.form.controls.txtinput.value);
+    this.uService.setNotes(this.id, this.form.controls.txtinput.value);
   }
 }

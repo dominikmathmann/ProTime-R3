@@ -1,17 +1,20 @@
 package de.dd.protime.r3.repository;
 
-import de.dd.protime.r3.model.Project;
-import de.dd.protime.r3.model.Project_;
-import de.dd.protime.r3.model.Record;
-import de.dd.protime.r3.model.Record_;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+
+import de.dd.protime.r3.model.Project;
+import de.dd.protime.r3.model.Project_;
+import de.dd.protime.r3.model.Record;
+import de.dd.protime.r3.model.Record_;
 
 /**
  *
@@ -56,6 +59,13 @@ public class RecordRepository extends RepositoryUserOwned<Record> {
         query.where(conditions.toArray(new Predicate[0]));
 
         return this.em.createQuery(query).getResultList();
+    }
+    
+    public Map<Integer, Long> countRecordByProject() {
+    	String jpql="select new map(r.project.id, count(r)) from Record r group by r.project.id order by count(r) desc";
+    	
+    	return this.em.createQuery(jpql, Map.class).getSingleResult();
+    	
     }
 
 }

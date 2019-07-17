@@ -3,11 +3,10 @@
   color: black;
 }
 
-.footer {
-  padding-top: 2rem;
+.header {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
 
   .user {
     font-weight: bold;

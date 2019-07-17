@@ -1,6 +1,6 @@
-import { Component, OnInit, forwardRef, ViewChild } from '@angular/core';
+import { Component, OnInit, forwardRef, ViewChild, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormGroup, FormBuilder } from '@angular/forms';
-import { Project } from 'src/app/ProTime-R3-backend';
+import { Project, Record } from 'src/app/ProTime-R3-backend';
 import { ProjectService } from 'src/app/base/services/project.service';
 import { Dropdown } from 'primeng/dropdown';
 
@@ -20,6 +20,9 @@ export class ProjectSelectionComponent implements ControlValueAccessor {
   projects: Project[];
 
   form: FormGroup;
+
+  @Input()
+  records: Record[];
 
   constructor(private service: ProjectService, builder: FormBuilder) {
     service.getAll().subscribe(r => (this.projects = [{ id: null } as Project].concat(r)));
@@ -48,9 +51,9 @@ export class ProjectSelectionComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  setDisabledState?(isDisabled: boolean): void {}
+  setDisabledState?(isDisabled: boolean): void { }
 
-  onChange: any = () => {};
+  onChange: any = () => { };
 
-  onTouched: any = () => {};
+  onTouched: any = () => { };
 }

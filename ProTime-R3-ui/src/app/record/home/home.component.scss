@@ -1,0 +1,15 @@
+.header-button {
+  display: flex;
+  justify-content: flex-end;
+
+  span.label {
+    padding-right: 0.2em;
+    vertical-align: middle;
+  }
+}
+
+.simpleModeButton {
+  button {
+    width: 100%;
+  }
+}

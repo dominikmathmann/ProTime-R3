@@ -17,6 +17,9 @@ export class RecordInputComponent implements OnChanges {
   @Output()
   saved = new EventEmitter<Record>();
 
+  @Output()
+  cancelled = new EventEmitter<Record>();
+
   @ViewChild('descriptionInput')
   descriptionInput: ElementRef;
 
@@ -78,6 +81,7 @@ export class RecordInputComponent implements OnChanges {
   cancel() {
     this.recordEvent = null;
     this.ngOnChanges();
+    this.cancelled.emit(null);
   }
 
   onDriveTimeChange() {

@@ -1,8 +1,35 @@
+<form [formGroup]="form">
+  <div class="row" style="flex-direction: row-reverse">
+    <div class="col-12 col-md-4 header-button">
+      <span class="label">SimpleMode:</span>
+      <p-inputSwitch formControlName="enabled" formControlName="simpleMode"></p-inputSwitch>
+    </div>
+
+    <div class="col-12 col-md-8">
+      <button type="button" class="btn btn-large btn-primary col-5" (click)="pause()" [disabled]="!pauseAllowed()">
+        stop
+      </button>
+      <button type="button" class="btn btn-large btn-primary  col-5 offset-2" type="button" (click)="continue()">
+        fortsetzen
+      </button>
+    </div>
+  </div>
+</form>
+
+<div class="row" *ngIf="simpleMode">
+  {{ lastRecordSummary }}
+</div>
+
 <div class="row">
   <div class="col-12 col-lg-5">
-    <pt3-record-input [recordEvent]="selectedRecord" (saved)="updateTable($event)"></pt3-record-input>
+    <pt3-record-input
+      #rein
+      [style.display]="simpleMode ? 'none' : 'block'"
+      [recordEvent]="selectedRecord"
+      (saved)="updateTable($event)"
+    ></pt3-record-input>
   </div>
-  <div class="col-12 col-lg-7">
-    <pt3-record-table (select)="selectedRecord = $event"></pt3-record-table>
+  <div class="col-12 col-lg-7" [style.display]="simpleMode ? 'none' : 'block'">
+    <pt3-record-table (select)="selectRecord($event)"></pt3-record-table>
   </div>
 </div>
