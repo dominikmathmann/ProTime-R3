@@ -46,7 +46,8 @@ export class ReportService {
     const fromAsPath = formatDate(from, 'dd.MM.yyyy', 'en');
     const toAsPath = formatDate(to, 'dd.MM.yyyy', 'en');
 
-    return this.http.get<Report>(`${environment.baseurl}report/${fromAsPath}/${toAsPath}`, {
+    const url = `${environment.baseurl}/resources/report/${fromAsPath}/${toAsPath}`;
+    return this.http.get<Report>(url, {
       params,
       headers: { Accept: httpConfig.accept },
       responseType: httpConfig.type as 'json'

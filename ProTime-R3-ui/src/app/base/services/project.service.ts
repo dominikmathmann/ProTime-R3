@@ -16,7 +16,11 @@ export class ProjectService {
 
   public save(p: Project): Observable<Project> {
     this.projects = null;
-    return this.service.post(p);
+    if (p.id) {
+      return this.service.put(p.id, p);
+    } else {
+      return this.service.post(p);
+    }
   }
 
   getAll(limit?: number): Observable<Project[]> {

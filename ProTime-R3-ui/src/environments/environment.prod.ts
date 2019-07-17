@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseurl: '/'
+  baseurl: 'https://protime-r3.selfhost.eu'
 };

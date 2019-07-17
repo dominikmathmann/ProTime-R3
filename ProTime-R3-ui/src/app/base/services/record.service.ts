@@ -12,7 +12,11 @@ export class RecordService {
   constructor(private service: DefaultService) { }
 
   save(record: Record): Observable<Record> {
-    return this.service.post1(record);
+    if (record.id) {
+      return this.service.put2(record.id, record);
+    } else {
+      return this.service.post1(record);
+    }
   }
 
   getAll(limit?: number, first?: number): Observable<Record[]> {
