@@ -11,6 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { RecordInputComponent } from './home/record-input/record-input.component';
 import { RecordTableComponent } from './home/record-table/record-table.component';
 import { RecordRoutingModule } from './record-routing.module';
+import { LoadOnScrollModule } from 'load-on-scroll';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 @NgModule({
   declarations: [HomeComponent, RecordInputComponent, RecordTableComponent],
@@ -22,8 +24,10 @@ import { RecordRoutingModule } from './record-routing.module';
     CalendarModule,
     ButtonModule,
     TableModule,
+    InputSwitchModule,
     BaseModule,
-    ProjectModule
+    ProjectModule,
+    LoadOnScrollModule
   ]
 })
 export class RecordModule {}

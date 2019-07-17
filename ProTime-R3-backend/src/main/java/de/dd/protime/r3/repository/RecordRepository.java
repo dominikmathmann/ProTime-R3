@@ -1,17 +1,20 @@
 package de.dd.protime.r3.repository;
 
-import de.dd.protime.r3.model.Project;
-import de.dd.protime.r3.model.Project_;
-import de.dd.protime.r3.model.Record;
-import de.dd.protime.r3.model.Record_;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+
+import de.dd.protime.r3.model.Project;
+import de.dd.protime.r3.model.Project_;
+import de.dd.protime.r3.model.Record;
+import de.dd.protime.r3.model.Record_;
 
 /**
  *
@@ -44,11 +47,11 @@ public class RecordRepository extends RepositoryUserOwned<Record> {
         }
 
         if (description != null) {
-            description = "%" + description + "%";
+            description = "%" + description.toLowerCase() + "%";
             Join<Record, Project> joinProject = root.join(Record_.project);
-            Predicate descriptionLike = builder.like(root.get(Record_.description), description);
-            Predicate projectNameLike = builder.like(joinProject.get(Project_.projectName), description);
-            Predicate projectIdLike = builder.like(joinProject.get(Project_.projectId), description);
+            Predicate descriptionLike = builder.like( builder.lower(root.get(Record_.description)), description);
+            Predicate projectNameLike = builder.like(builder.lower(joinProject.get(Project_.projectName)), description);
+            Predicate projectIdLike = builder.like(builder.lower(joinProject.get(Project_.projectId)), description);
 
             conditions.add(builder.or(descriptionLike, projectIdLike, projectNameLike));
         }
@@ -56,6 +59,13 @@ public class RecordRepository extends RepositoryUserOwned<Record> {
         query.where(conditions.toArray(new Predicate[0]));
 
         return this.em.createQuery(query).getResultList();
+    }
+    
+    public Map<Integer, Long> countRecordByProject() {
+    	String jpql="select new map(r.project.id, count(r)) from Record r group by r.project.id order by count(r) desc";
+    	
+    	return this.em.createQuery(jpql, Map.class).getSingleResult();
+    	
     }
 
 }

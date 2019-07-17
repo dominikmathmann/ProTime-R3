@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
@@ -30,10 +31,12 @@ public class LocalDatePeriodParam {
 
     }
 
+    @PathParam("from")
     public LocalDateTime getFrom() {
         return get(fromValue);
     }
 
+    @PathParam("to")
     public LocalDateTime getTo() {
         return get(toValue);
     }

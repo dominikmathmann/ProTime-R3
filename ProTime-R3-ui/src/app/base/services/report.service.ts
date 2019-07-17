@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Report } from 'src/app/ProTime-R3-backend';
+import { Record, Report } from 'src/app/api';
 import { environment } from 'src/environments/environment';
 import { tap } from 'rxjs/operators';
 import { formatDate } from '@angular/common';
@@ -10,7 +10,7 @@ import { formatDate } from '@angular/common';
   providedIn: 'root'
 })
 export class ReportService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   currentReport: Report;
 
@@ -46,8 +46,9 @@ export class ReportService {
     const fromAsPath = formatDate(from, 'dd.MM.yyyy', 'en');
     const toAsPath = formatDate(to, 'dd.MM.yyyy', 'en');
 
-    return this.http.get<Report>(`${environment.baseurl}report/${fromAsPath}/${toAsPath}`, {
-      params: new HttpParams({ fromObject: params }),
+    const url = `${environment.baseurl}/resources/report/${fromAsPath}/${toAsPath}`;
+    return this.http.get<Report>(url, {
+      params,
       headers: { Accept: httpConfig.accept },
       responseType: httpConfig.type as 'json'
     });

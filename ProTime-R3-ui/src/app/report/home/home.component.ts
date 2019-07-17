@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Report } from 'src/app/ProTime-R3-backend';
+import { Report } from 'src/app/api';
 
 @Component({
   selector: 'pt3-home',
@@ -9,7 +9,7 @@ import { Report } from 'src/app/ProTime-R3-backend';
 export class HomeComponent implements OnInit {
   report: Report;
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

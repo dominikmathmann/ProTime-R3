@@ -2,8 +2,8 @@ import { Component, ElementRef, EventEmitter, Input, OnChanges, Output, ViewChil
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { ProjectService } from 'src/app/base/services/project.service';
 import { RecordService } from 'src/app/base/services/record.service';
-import { Project, Record } from 'src/app/ProTime-R3-backend';
 import { SelectRecordEvent } from 'src/app/ProTime-R3-models';
+import { Project, Record } from 'src/app/api';
 
 @Component({
   selector: 'pt3-record-input',
@@ -16,6 +16,9 @@ export class RecordInputComponent implements OnChanges {
 
   @Output()
   saved = new EventEmitter<Record>();
+
+  @Output()
+  cancelled = new EventEmitter<Record>();
 
   @ViewChild('descriptionInput')
   descriptionInput: ElementRef;
@@ -78,6 +81,7 @@ export class RecordInputComponent implements OnChanges {
   cancel() {
     this.recordEvent = null;
     this.ngOnChanges();
+    this.cancelled.emit(null);
   }
 
   onDriveTimeChange() {

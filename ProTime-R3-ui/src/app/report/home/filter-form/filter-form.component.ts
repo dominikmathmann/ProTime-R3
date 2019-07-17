@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { ReportService } from 'src/app/base/services/report.service';
-import { Report } from 'src/app/ProTime-R3-backend';
 import { formatDate } from '@angular/common';
 import { saveAs } from 'file-saver';
+import { Report, DefaultService } from 'src/app/api';
+import { ReportService } from 'src/app/base/services/report.service';
 
 @Component({
   selector: 'pt3-filter-form',
@@ -44,7 +44,7 @@ export class FilterFormComponent implements OnInit {
     this.getReport();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   getReport() {
     const report = this.form.value;

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { JWTUser } from 'src/app/ProTime-R3-backend';
 import { environment } from 'src/environments/environment';
 import { tap } from 'rxjs/operators';
 
 import * as jdecode from 'jwt-decode';
+import { User, DefaultService } from 'src/app/api';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class LoginService {
 
   user: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private service: DefaultService) {
     this.token = this.getTokenFromStorage();
     if (this.token) {
       const decoded = jdecode(this.token);
@@ -25,15 +25,13 @@ export class LoginService {
     }
   }
 
-  login(user: string, password: string): Observable<JWTUser> {
-    return this.http
-      .post<JWTUser>(environment.baseurl + 'login', { user, password })
+  login(user: string, password: string): Observable<User> {
+    return this.service.login({ user, password })
       .pipe(tap(r => this.setTokenToStorage(r.token)));
   }
 
   logout(): Observable<any> {
-    return this.http
-      .get(environment.baseurl + 'logout', { observe: 'response' })
+    return this.service.logout()
       .pipe(tap(r => this.removeTokenFromStorage()));
   }
 

@@ -1,8 +1,7 @@
 import { Component, OnInit, OnChanges, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Project } from 'src/app/ProTime-R3-backend';
 import { ProjectService } from 'src/app/base/services/project.service';
+import { Project } from 'src/app/api';
 
 @Component({
   selector: 'pt3-home',

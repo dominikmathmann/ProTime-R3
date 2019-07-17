@@ -1,0 +1,7 @@
+openAPI:
+  info:
+    version: '3.2'
+    title: ProTimeR3
+    description: 'Project Time Recording Tool by Dominik Mathmann'
+    contact:
+      email: apiteam@swagger.io

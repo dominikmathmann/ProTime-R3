@@ -1,8 +1,9 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MenuItem } from 'primeng/components/common/menuitem';
-import { LoginService } from './base/services/login.service';
 import { Router } from '@angular/router';
+import { DefaultService } from './api';
+import { LoginService } from './base/services/login.service';
 
 @Component({
   selector: 'pt3-root',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   static readonly MOBILE_BREAKPOINT = 770;
 
-  constructor(public loginService: LoginService, private router: Router) {}
+  constructor(public loginService: LoginService, private router: Router) { }
 
   items: MenuItem[];
 

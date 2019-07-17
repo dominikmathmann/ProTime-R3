@@ -1,3 +1,10 @@
+<div class="header" *ngIf="loginService.user">
+  logged in as:
+  <p class="user">{{ loginService.user }}</p>
+  (
+  <p class="link" (click)="logout()">logout</p>
+  )
+</div>
 <div class="container">
   <div class="col-12 logo-header" #ot>
     <h1>
@@ -22,11 +29,3 @@
 </div>
 
 <p-toast></p-toast>
-
-<div class="footer" *ngIf="loginService.user">
-  logged in as:
-  <p class="user">{{ loginService.user }}</p>
-  (
-  <p class="link" (click)="logout()">logout</p>
-  )
-</div>
