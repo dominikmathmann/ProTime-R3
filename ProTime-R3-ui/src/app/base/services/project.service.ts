@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CommonHTTPServiceService } from './common-httpservice.service';
-import { Project } from '../../ProTime-R3-backend';
+import { Project, DefaultService } from 'src/app/api';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { from } from 'rxjs';
@@ -9,23 +8,20 @@ import { tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class ProjectService extends CommonHTTPServiceService<Project> {
-  PATH = 'project';
-
+export class ProjectService {
   private projects: Project[];
 
-  constructor(http: HttpClient) {
-    super(http);
+  constructor(private service: DefaultService) {
   }
 
   public save(p: Project): Observable<Project> {
     this.projects = null;
-    return super.save(p);
+    return this.service.post(p);
   }
 
   getAll(limit?: number): Observable<Project[]> {
     if (!this.projects) {
-      return super.getAll(limit).pipe(tap(r => (this.projects = r)));
+      return this.service.getAll(limit).pipe(tap(r => (this.projects = r)));
     } else {
       return from([this.projects]);
     }

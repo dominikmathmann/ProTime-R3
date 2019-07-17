@@ -1,8 +1,8 @@
 import { Component, OnInit, forwardRef, ViewChild, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormGroup, FormBuilder } from '@angular/forms';
-import { Project, Record } from 'src/app/ProTime-R3-backend';
 import { ProjectService } from 'src/app/base/services/project.service';
 import { Dropdown } from 'primeng/dropdown';
+import { Project, Record } from 'src/app/api';
 
 @Component({
   selector: 'pt3-project-selection',

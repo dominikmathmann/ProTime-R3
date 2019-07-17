@@ -16,6 +16,8 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
 import { ButtonModule } from 'primeng/button';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { HttpErrorInterceptorService } from './base/services/http-error-interceptor.service';
+import { ApiModule, BASE_PATH } from './api';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, LoginComponent],
@@ -28,7 +30,8 @@ import { HttpErrorInterceptorService } from './base/services/http-error-intercep
     ReactiveFormsModule,
     ToastModule,
     TieredMenuModule,
-    ButtonModule
+    ButtonModule,
+    ApiModule
   ],
   providers: [
     MessageService,
@@ -46,8 +49,12 @@ import { HttpErrorInterceptorService } from './base/services/http-error-intercep
       provide: HTTP_INTERCEPTORS,
       multi: true,
       useClass: HttpErrorInterceptorService
+    },
+    {
+      provide: BASE_PATH,
+      useValue: environment.baseurl
     }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

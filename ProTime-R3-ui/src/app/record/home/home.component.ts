@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, OnChanges } from '@angular/core';
-import { Record } from 'src/app/ProTime-R3-backend';
 import { RecordTableComponent } from './record-table/record-table.component';
 import { SelectRecordEvent } from 'src/app/ProTime-R3-models';
 import { RecordInputComponent } from './record-input/record-input.component';
@@ -8,6 +7,7 @@ import { UserPreferencesService } from 'src/app/base/services/user-preferences.s
 import { RecordService } from 'src/app/base/services/record.service';
 import { ProjectService } from 'src/app/base/services/project.service';
 import { ProjectIdToNamePipe } from 'src/app/base/pipes/project-id-to-name.pipe';
+import { Record } from 'src/app/api';
 
 @Component({
   selector: 'pt3-home',
@@ -72,6 +72,7 @@ export class HomeComponent {
 
   pauseAllowed() {
     if (!this.recordTable.records) return false;
+    if (this.recordTable.records.length === 0) return false;
     const record = this.recordTable.records[0];
     return record.duration === 0;
   }

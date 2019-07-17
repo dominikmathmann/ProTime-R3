@@ -9,7 +9,8 @@
     "build": "ng build --prod --source-map false --output-path ../ProTime-R3-backend/src/main/webapp/app --base-href .",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "api": "openapi-generator generate -g typescript-angular -o src/app/api -i ./openapi.json"
   },
   "private": true,
   "dependencies": {
