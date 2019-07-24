@@ -1,16 +1,28 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { TieredMenuModule } from 'primeng/tieredmenu';
+import { ToastModule } from 'primeng/toast';
+import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { MessageService } from 'primeng/components/common/messageservice';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        TabMenuModule,
+        TieredMenuModule,
+        ToastModule,
+        HttpClientTestingModule
       ],
       declarations: [
         AppComponent
       ],
+      providers: [
+        MessageService
+      ]
     }).compileComponents();
   }));
 
@@ -18,18 +30,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'ProTime-R3-ui'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('ProTime-R3-ui');
-  });
-
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to ProTime-R3-ui!');
   });
 });

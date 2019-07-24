@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
+import { LocalStorageTextAreaComponent } from './local-storage-text-area/local-storage-text-area.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -8,9 +11,16 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      imports: [
+        ReactiveFormsModule,
+        ButtonModule
+      ],
+      declarations: [
+        HomeComponent,
+        LocalStorageTextAreaComponent
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

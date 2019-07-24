@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LocalStorageTextAreaComponent } from './local-storage-text-area.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('LocalStorageTextAreaComponent', () => {
   let component: LocalStorageTextAreaComponent;
@@ -8,9 +9,15 @@ describe('LocalStorageTextAreaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LocalStorageTextAreaComponent ]
+      imports: [
+        ReactiveFormsModule
+      ],
+      providers: [
+
+      ],
+      declarations: [LocalStorageTextAreaComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

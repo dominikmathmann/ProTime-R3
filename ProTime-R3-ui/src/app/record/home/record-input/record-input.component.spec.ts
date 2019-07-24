@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RecordInputComponent } from './record-input.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ProjectSelectionComponent } from 'src/app/project/common/project-selection/project-selection.component';
+import { CalendarModule } from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
 
 describe('RecordInputComponent', () => {
   let component: RecordInputComponent;
@@ -8,9 +13,21 @@ describe('RecordInputComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RecordInputComponent ]
+      imports: [
+        ReactiveFormsModule,
+        HttpClientTestingModule,
+        CalendarModule,
+        DropdownModule
+      ],
+      declarations: [
+        RecordInputComponent,
+        ProjectSelectionComponent
+      ],
+      providers: [
+
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
