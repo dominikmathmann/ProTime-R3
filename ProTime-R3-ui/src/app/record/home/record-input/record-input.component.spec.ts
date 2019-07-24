@@ -9,31 +9,43 @@ import { DropdownModule } from 'primeng/dropdown';
 import { RecordService } from 'src/app/base/services/record.service';
 import { of } from 'rxjs';
 import { ProjectService } from 'src/app/base/services/project.service';
+import { UserPreferencesService } from 'src/app/base/services/user-preferences.service';
+import { DefaultService } from 'src/app/api';
 
 describe('RecordInputComponent', () => {
   let component: RecordInputComponent;
   let fixture: ComponentFixture<RecordInputComponent>;
+  const projectService = { getAll: () => { } };
+  const recordService = { save: () => { } };
+  let getAllServicesSpy;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         ReactiveFormsModule,
-        HttpClientTestingModule,
         CalendarModule,
-        DropdownModule
+        DropdownModule,
+        HttpClientTestingModule
       ],
       declarations: [
+
         RecordInputComponent,
         ProjectSelectionComponent
       ],
       providers: [
-
+        { provide: UserPreferencesService, useValue: {} },
+        { provide: RecordService, useValue: recordService },
+        { provide: ProjectService, useValue: projectService },
+        { provide: DefaultService, useValue: {} }
       ]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
+    const service = TestBed.get(ProjectService);
+    getAllServicesSpy = spyOn(service, 'getAll').and.returnValue(of([{}, {}]));
+
     fixture = TestBed.createComponent(RecordInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -45,11 +57,10 @@ describe('RecordInputComponent', () => {
 
   it('should load test data', () => {
     const service = TestBed.get(ProjectService);
-    const getAllSpy = spyOn(service, 'getAll').and.returnValue(of([{}, {}]));
     fixture = TestBed.createComponent(RecordInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    expect(getAllSpy).toHaveBeenCalled();
+    expect(getAllServicesSpy).toHaveBeenCalled();
     expect(component.projects.length).toBe(2);
   });
 
@@ -62,6 +73,7 @@ describe('RecordInputComponent', () => {
 
   it('close should save', () => {
     const emitSpy = spyOn(component.saved, 'emit');
+
     const saveSpy = spyOn(component['recordService'], 'save').and.returnValue(of({ id: 100 }));
 
     component.form.get('id').setValue(null);
@@ -75,7 +87,7 @@ describe('RecordInputComponent', () => {
 
   it('close shouldn save with active record', () => {
     const emitSpy = spyOn(component.saved, 'emit');
-    const saveSpy = spyOn(component['recordService'], 'save').and.returnValue(of({ id: 100 }));
+    const saveSpy = spyOn(recordService, 'save').and.returnValue(of({ id: 100 }));
 
     component.form.get('id').setValue(100);
     component.form.get('start').setValue(new Date());
