@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   name: 'projectIdToName'
 })
 export class ProjectIdToNamePipe implements PipeTransform {
-  constructor(private projectService: ProjectService) {}
+  constructor(public projectService: ProjectService) { }
 
   transform(value: any, args?: any): any {
     return Observable.create(o => {

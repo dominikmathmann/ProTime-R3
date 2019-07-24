@@ -80,7 +80,8 @@
             "karmaConfig": "src/karma.conf.js",
             "styles": ["src/styles.scss"],
             "scripts": [],
-            "assets": ["src/favicon-default.ico", "src/assets"]
+            "assets": ["src/favicon-default.ico", "src/assets"],
+            "codeCoverage": true
           }
         },
         "lint": {

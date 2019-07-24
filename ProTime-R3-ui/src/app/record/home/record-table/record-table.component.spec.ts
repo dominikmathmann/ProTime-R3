@@ -9,6 +9,8 @@ import { TimeToHourPipe } from 'src/app/base/pipes/time-to-hour.pipe';
 import { LoadOnScrollModule } from 'load-on-scroll';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
+import { of } from 'rxjs'
+
 describe('RecordTableComponent', () => {
   let component: RecordTableComponent;
   let fixture: ComponentFixture<RecordTableComponent>;
@@ -39,5 +41,29 @@ describe('RecordTableComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should emit selections', () => {
+    component.record = { id: 100 };
+    spyOn(component.select, 'emit');
+    component.onselect();
+    expect(component.select.emit).toHaveBeenCalledWith({ record: component.record });
+  });
+
+  it('should copy wihtout id', () => {
+    const reco = { id: 100 };
+    spyOn(component.select, 'emit');
+    component.copy(reco);
+    expect(component.select.emit).toHaveBeenCalledWith({ record: { id: null }, copy: true });
+  });
+
+  it('should show load-data sign', () => {
+    spyOn(component['service'], 'getAll').and.returnValue(of([{}]));
+    component.loadData({ limit: 100, first: 0 });
+    expect(component['service'].getAll).toHaveBeenCalled();
+    expect(component.records.length).toBe(1);
+    component.loadData({ limit: 100, first: 0 });
+    expect(component['service'].getAll).toHaveBeenCalledTimes(2);
+    expect(component.records.length).toBe(2);
   });
 });

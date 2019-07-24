@@ -54,4 +54,23 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('pause should only be active if we have a zero duration record', () => {
+    const element: HTMLElement = fixture.nativeElement;
+    expect(element.querySelector('#btnstop').getAttribute('disabled')).toBe('');
+
+    component.recordTable.records = [
+      { duration: 100 }
+    ];
+    fixture.detectChanges();
+    expect(element.querySelector('#btnstop').getAttribute('disabled')).toBe('');
+
+    component.recordTable.records = [
+      { duration: 0 }
+    ];
+    fixture.detectChanges();
+    expect(element.querySelector('#btnstop').getAttribute('disabled')).toBe(null);
+
+    console.log(component);
+  });
 });

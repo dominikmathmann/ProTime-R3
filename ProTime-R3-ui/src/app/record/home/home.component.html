@@ -6,10 +6,22 @@
     </div>
 
     <div class="col-12 col-md-8">
-      <button type="button" class="btn btn-large btn-primary col-5" (click)="pause()" [disabled]="!pauseAllowed()">
+      <button
+        type="button"
+        class="btn btn-large btn-primary col-5"
+        (click)="pause()"
+        [disabled]="!pauseAllowed()"
+        id="btnstop"
+      >
         stop
       </button>
-      <button type="button" class="btn btn-large btn-primary  col-5 offset-2" type="button" (click)="continue()">
+      <button
+        type="button"
+        class="btn btn-large btn-primary  col-5 offset-2"
+        type="button"
+        (click)="continue()"
+        id="btncontinue"
+      >
         fortsetzen
       </button>
     </div>
