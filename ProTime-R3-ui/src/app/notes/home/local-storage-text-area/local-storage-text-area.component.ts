@@ -26,14 +26,14 @@ export class LocalStorageTextAreaComponent implements OnInit, OnDestroy {
     this.txtChanged = this.form.controls.txtinput.valueChanges.pipe(debounceTime(1000)).subscribe(e => this.save());
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngOnDestroy() {
     this.txtChanged.unsubscribe();
     this.save();
   }
 
-  private save() {
+  public save() {
     this.uService.setNotes(this.id, this.form.controls.txtinput.value);
   }
 }
