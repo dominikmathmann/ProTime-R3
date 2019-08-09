@@ -1,15 +1,15 @@
-@import '../node_modules/primeng/resources/themes/nova-light/theme.css';
-@import '../node_modules/primeng/resources/primeng.min.css';
-@import '../node_modules/bootstrap/scss/bootstrap.scss';
-@import '../node_modules/ng-dm-libs/projects/load-on-scroll/src/lib/styles.scss';
-@import url('https://fonts.googleapis.com/css?family=Raleway');
-@import 'style-palette.scss';
-@import 'primeng-custom.scss';
+@import "../node_modules/primeng/resources/themes/nova-light/theme.css";
+@import "../node_modules/primeng/resources/primeng.min.css";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/ng-dm-libs/projects/load-on-scroll/src/lib/styles.scss";
+@import url("https://fonts.googleapis.com/css?family=Raleway");
+@import "style-palette.scss";
+@import "primeng-custom.scss";
 
 h1,
 h2,
 h3 {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 body {
@@ -44,7 +44,7 @@ body {
   }
 }
 
-input[type='checkbox'] {
+input[type="checkbox"] {
   transform: scale(1.5);
 }
 
@@ -61,6 +61,7 @@ form > .row:last-child {
 @media print {
   .menu,
   .footer,
+  .header,
   .logo-header,
   pt3-filter-form {
     display: none !important;
@@ -77,5 +78,5 @@ p.link {
   height: calc(100vh - 14rem);
   background-size: cover;
   background-position: center center;
-  background-image: url('assets/images/time-371226_1280.jpg');
+  background-image: url("assets/images/time-371226_1280.jpg");
 }

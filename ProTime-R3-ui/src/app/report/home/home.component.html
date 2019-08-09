@@ -34,13 +34,13 @@
     <table *ngFor="let day of report.days" class="export">
       <ng-container *ngFor="let record of day.entries">
         <tr>
-          <td>{{ day.date | date: 'dd.MM.yyyy' }}</td>
+          <td>{{ day.date | date: "dd.MM.yyyy" }}</td>
           <td>{{ record.project | projectIdToName | async }}</td>
           <td>{{ record.duration | timeToHour }}</td>
           <td>{{ record.description }}</td>
         </tr>
         <tr *ngIf="record.durationNotAccountable">
-          <td>{{ day.date | date: 'dd.MM.yyyy' }}</td>
+          <td>{{ day.date | date: "dd.MM.yyyy" }}</td>
           <td>{{ record.project | projectIdToName | async }} - Fahrzeit</td>
           <td>{{ record.durationNotAccountable | timeToHour }}</td>
           <td></td>
@@ -76,4 +76,5 @@
 <br />
 Ort,Datum / Unterschrift <br />
 <br />
+<div class="sign" contentEditable="true">{{ signText }}</div>
 _______________________________________________________

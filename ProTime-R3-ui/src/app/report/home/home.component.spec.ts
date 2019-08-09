@@ -11,8 +11,9 @@ import { ProjectIdToNamePipe } from 'src/app/base/pipes/project-id-to-name.pipe'
 import { ProjectSelectionComponent } from 'src/app/project/common/project-selection/project-selection.component';
 import { CalendarModule } from 'primeng/calendar';
 import { Dropdown, DropdownModule } from 'primeng/dropdown';
+import { DatePipe } from '@angular/common';
 
-describe('HomeComponent', () => {
+fdescribe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
@@ -49,4 +50,16 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create show current Date in footer', () => {
+    const element: HTMLElement = fixture.nativeElement;
+    const signValue = element.querySelector('.sign').innerHTML;
+
+    const datePipe = new DatePipe('en');
+    expect(signValue).toContain(datePipe.transform(new Date(), 'dd.MM.yyyy'));
+    expect(signValue).toContain('Bielefeld');
+
+  });
+
+
 });
