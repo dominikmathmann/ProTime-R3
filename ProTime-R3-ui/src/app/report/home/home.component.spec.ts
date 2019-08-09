@@ -13,7 +13,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { Dropdown, DropdownModule } from 'primeng/dropdown';
 import { DatePipe } from '@angular/common';
 
-fdescribe('HomeComponent', () => {
+describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
