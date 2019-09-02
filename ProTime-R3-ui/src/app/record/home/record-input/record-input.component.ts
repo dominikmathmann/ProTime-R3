@@ -71,6 +71,16 @@ export class RecordInputComponent implements OnChanges {
   }
 
   save() {
+
+    if (!this.form.value.start && !this.form.value.end) {
+      this.form.patchValue(
+        {
+          start: new Date(),
+          end: new Date()
+        }
+      );
+    }
+
     this.recordService.save(this.form.value).subscribe(r => {
       this.recordEvent = null;
       this.ngOnChanges();

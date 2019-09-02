@@ -10,7 +10,7 @@ import { RecordService } from 'src/app/base/services/record.service';
 import { of } from 'rxjs';
 import { ProjectService } from 'src/app/base/services/project.service';
 import { UserPreferencesService } from 'src/app/base/services/user-preferences.service';
-import { DefaultService } from 'src/app/api';
+import { DefaultService, Record } from 'src/app/api';
 
 describe('RecordInputComponent', () => {
   let component: RecordInputComponent;
@@ -106,6 +106,19 @@ describe('RecordInputComponent', () => {
 
     expect(emitSpy).toHaveBeenCalled();
     expect(component.recordEvent).toBeFalsy();
+
+  });
+
+
+  fit('save should set date if not set', () => {
+    const saveSpy = spyOn(component['recordService'], 'save').and.callFake((p: Record) => {
+      expect(p.start).toBeTruthy();
+      expect(p.end).toBeTruthy();
+      expect(p.start).toEqual(p.end);
+      return of(p);
+    });
+
+    component.save();
 
   });
 });
