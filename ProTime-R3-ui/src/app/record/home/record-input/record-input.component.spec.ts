@@ -110,7 +110,7 @@ describe('RecordInputComponent', () => {
   });
 
 
-  fit('save should set date if not set', () => {
+  it('save should set date if not set', () => {
     const saveSpy = spyOn(component['recordService'], 'save').and.callFake((p: Record) => {
       expect(p.start).toBeTruthy();
       expect(p.end).toBeTruthy();
