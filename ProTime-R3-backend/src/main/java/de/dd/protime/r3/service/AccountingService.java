@@ -4,14 +4,17 @@ import de.dd.protime.r3.model.Project;
 import de.dd.protime.r3.model.dto.Report;
 import de.dd.protime.r3.repository.ProjectRepository;
 import de.dd.protime.r3.repository.RecordRepository;
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.time.temporal.TemporalAdjusters;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -50,7 +53,7 @@ public class AccountingService {
         });
 
         StringBuilder str = new StringBuilder();
-
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.GERMANY);
         projectTimes.keySet().stream().forEach(projectid -> {
             Project project = this.projectRepository.findById(projectid);
             str.append(project.getProjectId());
@@ -61,14 +64,49 @@ public class AccountingService {
             IntStream.range(1, last + 1).mapToObj(i -> i + ";").forEach(str::append);
             str.append("\n");
 
-            NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.GERMANY);
-
             Arrays.stream(projectTimes.get(projectid)[0]).map(r -> (r == null || r == 0 ? "" : numberFormat.format(r)) + ";").forEach(str::append);
             str.append("\n");
             Arrays.stream(projectTimes.get(projectid)[1]).map(r -> (r == null || r == 0 ? "" : numberFormat.format(r)) + ";").forEach(str::append);
             str.append("\n");
             str.append("\n");
         });
+
+        // build sum-row
+        str.append("Summe;;");
+        str.append("\n");
+
+        IntStream.range(1, last + 1).mapToObj(i -> i + ";").forEach(str::append);
+        str.append("\n");
+
+        Double[] sumA = new Double[last];
+        Double[] sumB = new Double[last];
+
+        for (Double[][] projectTime : projectTimes.values()) {
+            for (int i = 0; i < last; i++) {
+
+                if (sumA[i] == null) {
+                    sumA[i] = 0.;
+                }
+                if (sumB[i] == null) {
+                    sumB[i] = 0.;
+                }
+                final Double ta = projectTime[0][i];
+                if (ta != null) {
+                    sumA[i] += ta;
+                }
+
+                final Double tb = projectTime[1][i];
+                if (tb != null) {
+                    sumB[i] += tb;
+                }
+            }
+        }
+
+        Arrays.stream(sumA).map(r -> (r == null || r == 0 ? "" : numberFormat.format(r)) + ";").forEach(str::append);
+        str.append("\n");
+        Arrays.stream(sumB).map(r -> (r == null || r == 0 ? "" : numberFormat.format(r)) + ";").forEach(str::append);
+        str.append("\n");
+        str.append("\n");
 
         return str.toString();
 
