@@ -18,10 +18,10 @@ import { Record } from 'src/app/api';
 export class HomeComponent {
   selectedRecord: SelectRecordEvent;
 
-  @ViewChild(RecordTableComponent)
+  @ViewChild(RecordTableComponent, { static: true })
   recordTable: RecordTableComponent;
 
-  @ViewChild(RecordInputComponent)
+  @ViewChild(RecordInputComponent, { static: true })
   recordInput: RecordInputComponent;
 
   simpleMode = false;

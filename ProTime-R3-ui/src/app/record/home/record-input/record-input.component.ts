@@ -20,7 +20,7 @@ export class RecordInputComponent implements OnChanges {
   @Output()
   cancelled = new EventEmitter<Record>();
 
-  @ViewChild('descriptionInput')
+  @ViewChild('descriptionInput', { static: true })
   descriptionInput: ElementRef;
 
   projects: Project[];

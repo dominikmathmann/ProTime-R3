@@ -8,10 +8,10 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [LoginGuardService] },
   { path: 'home', component: HomeComponent, canActivate: [LoginGuardService] },
   { path: 'login', component: LoginComponent },
-  { path: 'record', loadChildren: './record/record.module#RecordModule', canActivate: [LoginGuardService] },
-  { path: 'project', loadChildren: './project/project.module#ProjectModule', canActivate: [LoginGuardService] },
-  { path: 'report', loadChildren: './report/report.module#ReportModule', canActivate: [LoginGuardService] },
-  { path: 'notes', loadChildren: './notes/notes.module#NotesModule', canActivate: [LoginGuardService] }
+  { path: 'record', loadChildren: () => import('./record/record.module').then(m => m.RecordModule), canActivate: [LoginGuardService] },
+  { path: 'project', loadChildren: () => import('./project/project.module').then(m => m.ProjectModule), canActivate: [LoginGuardService] },
+  { path: 'report', loadChildren: () => import('./report/report.module').then(m => m.ReportModule), canActivate: [LoginGuardService] },
+  { path: 'notes', loadChildren: () => import('./notes/notes.module').then(m => m.NotesModule), canActivate: [LoginGuardService] }
 ];
 
 @NgModule({
