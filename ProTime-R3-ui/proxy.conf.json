@@ -1,6 +1,6 @@
 {
   "http://localhost:4200/resources/*": {
-    "target": "https://localhost/resources",
+    "target": "http://localhost:8080/protimer/resources",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true,
