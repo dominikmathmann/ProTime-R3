@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { formatDate } from '@angular/common';
-import { toDate } from '@angular/common/src/i18n/format_date';
 
 @Injectable({
   providedIn: 'root'

@@ -15,7 +15,7 @@ export class HomeComponent implements AfterViewInit {
 
   form: FormGroup;
 
-  @ViewChild('inProjectId', { static: false })
+  @ViewChild('inProjectId')
   inProjectId: ElementRef;
 
   constructor(private service: ProjectService, builder: FormBuilder) {
