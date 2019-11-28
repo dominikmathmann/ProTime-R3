@@ -6,10 +6,11 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { ProjectIdToNamePipe } from 'src/app/base/pipes/project-id-to-name.pipe';
 import { TimeToHourPipe } from 'src/app/base/pipes/time-to-hour.pipe';
-import { LoadOnScrollModule } from 'load-on-scroll';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { of } from 'rxjs'
+import { BaseModule } from 'src/app/base/base.module';
+import { LoadOnScrollDirective } from 'src/app/base/directives/load-on-scroll.directive';
 
 describe('RecordTableComponent', () => {
   let component: RecordTableComponent;
@@ -21,13 +22,13 @@ describe('RecordTableComponent', () => {
         ReactiveFormsModule,
         ButtonModule,
         TableModule,
-        LoadOnScrollModule,
         HttpClientTestingModule
       ],
       declarations: [
         RecordTableComponent,
         ProjectIdToNamePipe,
-        TimeToHourPipe
+        TimeToHourPipe,
+        LoadOnScrollDirective
       ]
     })
       .compileComponents();

@@ -8,10 +8,11 @@ import { TimeToHourPipe } from './pipes/time-to-hour.pipe';
 import { HttpJwtInterceptorService } from './services/http-jwt-interceptor.service';
 import { ToastModule } from 'primeng/toast';
 import { ProjectIdToNamePipe } from './pipes/project-id-to-name.pipe';
+import { LoadOnScrollDirective } from './directives/load-on-scroll.directive';
 
 @NgModule({
-  declarations: [TimeToHourPipe, ProjectIdToNamePipe],
+  declarations: [TimeToHourPipe, ProjectIdToNamePipe, LoadOnScrollDirective],
   imports: [CommonModule, ToastModule],
-  exports: [TimeToHourPipe, ProjectIdToNamePipe]
+  exports: [TimeToHourPipe, ProjectIdToNamePipe, LoadOnScrollDirective]
 })
-export class BaseModule {}
+export class BaseModule { }

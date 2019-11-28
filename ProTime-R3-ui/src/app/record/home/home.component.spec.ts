@@ -12,8 +12,9 @@ import { CalendarModule } from 'primeng/calendar';
 import { ProjectIdToNamePipe } from 'src/app/base/pipes/project-id-to-name.pipe';
 import { TimeToHourPipe } from 'src/app/base/pipes/time-to-hour.pipe';
 import { ButtonModule } from 'primeng/button';
-import { LoadOnScrollModule } from 'load-on-scroll';
 import { DropdownModule } from 'primeng/dropdown';
+import { BaseModule } from 'src/app/base/base.module';
+import { LoadOnScrollDirective } from 'src/app/base/directives/load-on-scroll.directive';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -28,8 +29,7 @@ describe('HomeComponent', () => {
         InputSwitchModule,
         CalendarModule,
         ButtonModule,
-        DropdownModule,
-        LoadOnScrollModule
+        DropdownModule
       ],
       providers: [
 
@@ -39,7 +39,8 @@ describe('HomeComponent', () => {
         RecordTableComponent,
         ProjectSelectionComponent,
         ProjectIdToNamePipe,
-        TimeToHourPipe
+        TimeToHourPipe,
+        LoadOnScrollDirective
       ]
     })
       .compileComponents();
