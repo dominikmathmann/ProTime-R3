@@ -15,6 +15,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^8.2.14",
+    "@angular/cdk": "^8.2.3",
     "@angular/common": "~8.2.14",
     "@angular/compiler": "~8.2.14",
     "@angular/core": "~8.2.14",
@@ -28,7 +29,7 @@
     "jwt-decode": "^2.2.0",
     "ng-dm-libs": "git+https://github.com/dominikmathmann/ng-dm-libs.git",
     "primeicons": "^1.0.0",
-    "primeng": "^7.0.5",
+    "primeng": "^8.1.1",
     "rxjs": "~6.5.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
