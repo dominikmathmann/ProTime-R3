@@ -11,13 +11,13 @@ build with
 
 |  
 | ---
-| Angular 7
+| Angular 9
 | Angular CLI
 | PrimenNG
 | Bootstrap
 | JEE 8 (JAX-RS, JPA, CDI)
 | Jackson
-| Thorntail
+| Widlfly
 |
 
 **by Dominik Mathmann**
